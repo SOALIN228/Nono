@@ -1,0 +1,23 @@
+{
+  "name": "nono",
+  "version": "1.0.0",
+  "description": "Vue,ui",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SOALIN228/Nono.git"
+  },
+  "keywords": [
+    "Vue",
+    "ui"
+  ],
+  "author": "soalin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SOALIN228/Nono/issues"
+  },
+  "homepage": "https://github.com/SOALIN228/Nono#readme"
+}

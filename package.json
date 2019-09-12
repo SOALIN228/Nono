@@ -15,9 +15,12 @@
     "ui"
   ],
   "author": "soalin",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SOALIN228/Nono/issues"
   },
-  "homepage": "https://github.com/SOALIN228/Nono#readme"
+  "homepage": "https://github.com/SOALIN228/Nono#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }

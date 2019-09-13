@@ -9,6 +9,10 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Icon from './icon'
+
+Vue.component('g-icon', Icon)
 export default {
   name: 'g-button',
   props: {
@@ -85,6 +89,7 @@ export default {
         margin-left: .1em;
       }
     }
+
     .loading {
       animation: spin 1s infinite linear;
     }

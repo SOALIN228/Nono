@@ -1,6 +1,6 @@
 {
   "name": "nono-ui",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "Vue,ui",
   "main": "dist/index.js",
   "scripts": {

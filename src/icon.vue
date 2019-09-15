@@ -1,5 +1,5 @@
 <template>
-  <svg class="g-icon">
+  <svg class="icon">
     <use :xlink:href="`#i-${name}`"></use>
   </svg>
 </template>
@@ -8,7 +8,7 @@
 import './svg'
 
 export default {
-  name: 'g-icon',
+  name: 'NIcon',
   props: ['name'],
   data () {
     return {}
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .g-icon {
+  .icon {
     width: 1em;
     height: 1em;
   }

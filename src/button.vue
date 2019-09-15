@@ -1,7 +1,7 @@
 <template>
-  <button class="g-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
-    <g-icon :name="icon" class="icon" v-if="icon && !loading"></g-icon>
-    <g-icon class="loading icon" name="loading" v-if="loading"></g-icon>
+  <button class="button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
+    <Icon :name="icon" class="icon" v-if="icon && !loading"></Icon>
+    <Icon class="loading icon" name="loading" v-if="loading"></Icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -12,9 +12,9 @@
 import Icon from './icon'
 
 export default {
-  name: 'g-button',
+  name: 'NButton',
   components: {
-    'g-icon': Icon
+    Icon
   },
   props: {
     icon: {},
@@ -46,7 +46,7 @@ export default {
     }
   }
 
-  .g-button {
+  .button {
     font-size: var(--font-size);
     height: var(--button-height);
     padding: 0 1em;

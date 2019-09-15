@@ -32,15 +32,18 @@
 </head>
 <body>
   <div id="app">
-    <g-button :loading="loading" @click="loading = !loading">哈哈哈</g-button>
-    <g-button icon="settings">按钮</g-button>
-    <g-button icon="settings" icon-position="right">哈哈哈</g-button>
-    <g-button-group>
-      <g-button icon="left">按钮</g-button>
-      <g-button>更多</g-button>
-      <g-button icon="right" icon-position="right">按钮</g-button>
-    </g-button-group>
-    <div id="test"></div>
+    <g-input value="李陈" disabled></g-input>
+    <g-input value="李陈2" readonly></g-input>
+    <g-input value="李陈3" error="姓名不能少于两个字"></g-input>
+    <g-input value="李陈4"></g-input>
+<!--    <g-button :loading="loading" @click="loading = !loading">哈哈哈</g-button>-->
+<!--    <g-button icon="settings">按钮</g-button>-->
+<!--    <g-button icon="settings" icon-position="right">哈哈哈</g-button>-->
+<!--    <g-button-group>-->
+<!--      <g-button icon="left">按钮</g-button>-->
+<!--      <g-button>更多</g-button>-->
+<!--      <g-button icon="right" icon-position="right">按钮</g-button>-->
+<!--    </g-button-group>-->
   </div>
   <script src="src/main.js"></script>
 </body>

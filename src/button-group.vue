@@ -1,12 +1,12 @@
 <template>
-  <div class="g-button-group">
+  <div class="button-group">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'g-button-group',
+  name: 'NButtonGroup',
   data () {
     return {}
   },
@@ -22,11 +22,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .g-button-group {
+  .button-group {
     display: inline-flex;
     vertical-align: middle;
 
-    > .g-button {
+    > .button {
       border-radius: 0;
 
       &:not(:first-child) {

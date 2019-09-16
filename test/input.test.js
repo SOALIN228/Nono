@@ -70,9 +70,10 @@ describe('Input', () => {
         const callback = sinon.fake()
         vm.$on(eventName, callback) // 监听对应的事件
         let event = new Event(eventName) // 创建对应的实例
+        Object.defineProperty(event, 'target', {value: {value: 'hi'}, enumerable: true})
         let inputElement = vm.$el.querySelector('input')
         inputElement.dispatchEvent(event) // 模拟触发事件
-        expect(callback).to.have.been.calledWith(event) // 参数为event
+        expect(callback).to.have.been.calledWith('hi') // 指定参数
       })
     })
   })

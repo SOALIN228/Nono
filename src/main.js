@@ -13,7 +13,8 @@ new Vue({
   el: '#app',
   data () {
     return {
-      loading: true
+      loading: true,
+      message: 'hi'
     }
   },
   methods: {

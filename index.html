@@ -34,7 +34,9 @@
   <div id="app">
 <!--    <g-input value="李陈" disabled></g-input>-->
 <!--    <g-input value="李陈2" readonly></g-input>-->
-    <g-input value="李陈3" @change="inputChange"></g-input>
+    <g-input value="李陈3" @change="inputChange" v-model="message"></g-input>
+    <p>{{message}}</p>
+    <button @click="message += 1">+1</button>
 <!--    <g-input value="李陈4"></g-input>-->
 <!--    <g-button :loading="loading" @click="loading = !loading">哈哈哈</g-button>-->
 <!--    <g-button icon="settings">按钮</g-button>-->

@@ -78,7 +78,7 @@ SOALIN228@163.com
 5. 使用`flex` 布局，通过`order` 属性控制图标显示位置
 6. 在组件上监听事件，会默认进入组件内部，需要在组件中使用`@click="$emit('click')"` 将事件再传递出去
 
-`Icon`
+`icon`
 
 1. 使用`SVG` 图标
 2. 接收在调用处传递的参数，显示不同的图标
@@ -87,12 +87,16 @@ SOALIN228@163.com
 `button-group`
 
 1.  使用`slot`  插入`button` 实现按钮组
-2. 元素对齐使用`vertical-align: middle;`
-3. 使用结构选择器`:first-child` 设置元素圆角
-4. `:hover` 时添加`z-index` 实现凸起
-5. 使用`:not(:first-child)` 控制`margin-left` 解决边框重叠
+2.  元素对齐使用`vertical-align: middle;`
+3.  使用结构选择器`:first-child` 设置元素圆角
+4.  `:hover` 时添加`z-index` 实现凸起
+5.  使用`:not(:first-child)` 控制`margin-left` 解决边框重叠
 
+`input`
 
+1. 传入`error` 属性来进行文字的提示，使用`template` 包成一个整体
+2. 在组件上直接写`disabled` 相当于`:disabled=true`
+3. `v-model` 通过`@input="$emit('input', $event.target.value)"` 、`:value="value"` 实现
 
 ### 测试
 
@@ -107,6 +111,8 @@ SOALIN228@163.com
 创建`karma.conf.js`
 
 在`test` 文件夹下为每个组件写单元测试`xxx.test.js`
+
+Karma 是一个测试运行器，它可以呼起浏览器，加载测试脚本，然后运行测试用例，它需要`mocha`和`sinon-chai` ,引入`mocha` 可以使用`describe` 和 `it`, 引入`sinon` 可以使用`sinon.fake()` ，引入`chai` 可以使用`expect` ,使用`sinon-chai` 可以引入`sinon` 和`chai` 并使其可以混合使用
 
 **集成测试**
 

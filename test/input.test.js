@@ -7,7 +7,7 @@ Vue.config.devtools = false
 
 describe('Input', () => {
   it('存在.', () => {
-    expect(Input).to.be.ok
+    expect(Input).to.exist
   })
 
   describe('props', () => {

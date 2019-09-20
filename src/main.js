@@ -40,14 +40,15 @@ new Vue({
   },
   methods: {
     showToast(){
-      this.$toast('我是 message', {
+      this.$toast('我是', {
         closeButton: {
           text: '知道了',
           callback (toast) {
             toast.log()
             console.log('xx说知道了')
           }
-        }
+        },
+        enableHtml: false
       })
     }
   }

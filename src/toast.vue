@@ -60,6 +60,7 @@ export default {
   methods: {
     close () {
       this.$el.remove()
+      this.$emit('close')
       this.$destroy()
     },
     log () { // 给外部调用做测试
@@ -79,7 +80,12 @@ export default {
   $font-size: 14px;
   $toast-min-height: 40px;
   $toast-bg: rgba(0, 0, 0, 0.75);
+  @keyframes fade-in {
+    0% {opacity: 0; transform: translateY(100%);}
+    100% {opacity: 1;transform: translateY(0%);}
+  }
   .toast {
+    animation: fade-in 1s;
     font-size: $font-size;
     min-height: $toast-min-height;
     line-height: 1.8;

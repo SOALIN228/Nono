@@ -18,12 +18,11 @@ export default {
   name: 'NToast',
   props: {
     autoClose: {
-      type: Boolean,
-      default: true
-    },
-    autoCloseDelay: {
-      type: Number,
-      default: 5
+      type: [Boolean, Number],
+      default: 3,
+      validator (value) {
+        return value === false || typeof value === 'number';
+      }
     },
     closeButton: {
       type: Object,
@@ -47,14 +46,8 @@ export default {
     }
   },
   mounted () {
-    if (this.autoClose) {
-      setTimeout(() => {
-        this.close()
-      }, this.autoCloseDelay * 1000)
-    }
-    this.$nextTick(() => { // $nextTick 在dom 更新完才会被调用，因为vue 更新dom 是异步的
-      this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
-    })
+    this.updateStyles()
+    this.execAutoClose()
   },
   computed: {
     toastClasses () {
@@ -64,6 +57,19 @@ export default {
     }
   },
   methods: {
+    updateStyles () {
+      this.$nextTick(() => { // $nextTick 在dom 更新完才会被调用，因为vue 更新dom 是异步的
+        this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
+      })
+    },
+    execAutoClose () {
+      console.log(this.autoClose)
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close()
+        }, this.autoClose * 1000)
+      }
+    },
     close () {
       this.$el.remove()
       this.$emit('close')

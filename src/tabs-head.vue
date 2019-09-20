@@ -8,8 +8,12 @@
 <script>
 export default {
   name: 'NTabsHead',
+  inject: ['eventBus'],
   data () {
     return {}
+  },
+  created () {
+    console.log(this.eventBus)
   }
 }
 </script>

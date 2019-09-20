@@ -50,16 +50,20 @@ new Vue({
     }
   },
   methods: {
-    showToast1(){
+    yyy (data) {
+      console.log('yyy')
+      console.log(data)
+    },
+    showToast1 () {
       this.showToast('top')
     },
-    showToast2(){
+    showToast2 () {
       this.showToast('middle')
     },
-    showToast3(){
+    showToast3 () {
       this.showToast('bottom')
     },
-    showToast(position){
+    showToast (position) {
       this.$toast(`你的智商目前为 ${parseInt(Math.random() * 100)}。你的智商需要充值！`, {
         position,
         closeButton: {

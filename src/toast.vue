@@ -21,7 +21,7 @@ export default {
       type: [Boolean, Number],
       default: 3,
       validator (value) {
-        return value === false || typeof value === 'number';
+        return value === false || typeof value === 'number'
       }
     },
     closeButton: {
@@ -63,7 +63,6 @@ export default {
       })
     },
     execAutoClose () {
-      console.log(this.autoClose)
       if (this.autoClose) {
         setTimeout(() => {
           this.close()

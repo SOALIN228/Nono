@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="xxx">
+  <div class="tabs-item" :class="classes" @click="xxx" >
     <slot></slot>
   </div>
 </template>
@@ -23,9 +23,15 @@ export default {
       active: false
     }
   },
+  computed: {
+    classes () {
+      return {
+        active: this.active
+      }
+    }
+  },
   created () {
     this.eventBus.$on('update:selected', (name) => {
-      console.log(name)
       this.active = name === this.name
     })
   },
@@ -39,6 +45,10 @@ export default {
 
 <style lang="scss" scoped>
   .tabs-item {
-
+    flex-shrink: 0;
+    padding: 0 1em;
+    &.active {
+      background: red;
+    }
   }
 </style>

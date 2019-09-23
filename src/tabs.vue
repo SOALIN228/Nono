@@ -33,20 +33,28 @@ export default {
     }
   },
   mounted () {
-    if (this.$children.length === 0) { // 子组件为空
-      console && console.warn &&
-      console.warn('tabs的子组件应该是tabs-head 和tabs-nav，但你没有写子组件')
-    }
-    this.$children.forEach((vm) => { // 找出当前选中元素进行发布
-      if (vm.$options.name === 'NTabsHead') {
-        vm.$children.forEach((childVm) => {
-          if (childVm.$options.name === 'NTabsItem'
-            && childVm.name === this.selected) {
-            this.eventBus.$emit('update:selected', this.selected, childVm)
-          }
-        })
+    this.checkChildren()
+    this.selectTab()
+  },
+  methods: {
+    checkChildren () {
+      if (this.$children.length === 0) { // 子组件为空
+        console && console.warn &&
+        console.warn('tabs的子组件应该是tabs-head 和tabs-nav，但你没有写子组件')
       }
-    })
+    },
+    selectTab () { // 找出当前选中元素进行发布
+      this.$children.forEach((vm) => {
+        if (vm.$options.name === 'NTabsHead') {
+          vm.$children.forEach((childVm) => {
+            if (childVm.$options.name === 'NTabsItem'
+              && childVm.name === this.selected) {
+              this.eventBus.$emit('update:selected', this.selected, childVm)
+            }
+          })
+        }
+      })
+    }
   }
 }
 </script>

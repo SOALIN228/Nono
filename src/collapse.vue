@@ -13,6 +13,9 @@ export default {
     single: {
       type: Boolean,
       default: false
+    },
+    selected: {
+      type: String,
     }
   },
   data () {
@@ -27,9 +30,15 @@ export default {
       }
     } else {
       return {
-        eventBus: null
+        eventBus: this.eventBus
       }
     }
+  },
+  mounted () {
+    this.eventBus.$emit('update:selected', this.selected)
+    this.eventBus.$on('update:selected', (name) => { // 将变化的selected 传递给外界
+      this.$emit('update:selected', name)
+    })
   }
 }
 </script>

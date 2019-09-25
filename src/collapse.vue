@@ -5,10 +5,31 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   name: 'NCollapse',
+  props: {
+    single: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
-    return {}
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide () {
+    if (this.single) {
+      return {
+        eventBus: this.eventBus
+      }
+    } else {
+      return {
+        eventBus: null
+      }
+    }
   }
 }
 </script>
@@ -19,6 +40,5 @@ export default {
   .collapse {
     border: 1px solid $grey;
     border-radius: $border-radius;
-    border-bottom: none;
   }
 </style>

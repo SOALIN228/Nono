@@ -51,7 +51,7 @@ new Vue({
       loading2: true,
       loading3: false,
       message: 'hi',
-      selectedTab: '2'
+      selectedTab: ['2', '3']
     }
   },
   methods: {

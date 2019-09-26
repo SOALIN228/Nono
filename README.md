@@ -7,40 +7,9 @@ Vue 组件库
 
 这是我在学习 Vue 过程中做的一个 UI 框架，如果你觉得有用，请点star
 
-## 开始使用
-
-### 安装
-1. 使用本UI组件库前，请在css 中开启border-box
-    ```css
-    *,*::before,*::after{box-sizing: border-box;}
-    ```
-
-    IE 8 及以上浏览器都支持此样式
-
-2. 安装
-
-    ```bash
-    npm install --save nono-ui
-    ```
-
-3. 引入
-
-    ```javascript
-    import {Button, ButtonGroup, Icon} from 'nono-ui'
-    import 'nono-ui/dist/index.css'
-    
-    export default {
-      name: 'app',
-      components: {
-        Button,
-        ButtonGroup,
-        Icon
-      }
-    }
-    ```
-
-
 ## 文档
+
+官网： https://soalin228.github.io/Nono/
 
 ## 联系方式
 

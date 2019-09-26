@@ -10,7 +10,6 @@ import Header from './header'
 import Content from './content'
 import Sider from './sider'
 import Footer from './footer'
-import Toast from './toast'
 import plugin from './plugin'
 import Tabs from './tabs'
 import TabsHead from './tabs-head'
@@ -32,7 +31,6 @@ Vue.component('g-header', Header)
 Vue.component('g-content', Content)
 Vue.component('g-sider', Sider)
 Vue.component('g-footer', Footer)
-Vue.component('g-toast', Toast)
 Vue.use(plugin)
 Vue.component('g-tabs', Tabs)
 Vue.component('g-tabs-head', TabsHead)
@@ -55,6 +53,16 @@ new Vue({
     }
   },
   methods: {
+    onClickButton () {
+      this.$toast('你知道我在等你吗？', {
+        closeButton: {
+          text: '知道了',
+          callback: () => {
+            console.log('他说知道了')
+          }
+        }
+      })
+    },
     yyy () {
       console.log('yy')
     },

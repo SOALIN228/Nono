@@ -1,24 +1,23 @@
 module.exports = {
   base: '/Nono/',
-  title: 'Nono-UI',
+  title: 'Nono-ui',
   description: '一个好用的UI框架',
   themeConfig: {
     nav: [
-      { text: '主页', link: '/' },
-      { text: '文档', link: '/guide/' },
+      { text: '指南', link: '/guide/' },
       { text: 'GitHub', link: 'https://github.com/SOALIN228/Nono' },
     ],
     sidebar: [
       {
-        title: '入门',
+        title: '开发指南',
         children: [
-          '/install/',
-          '/get-started/',
+          '/guide/',
+          '/guide/get-started/',
         ]
       },
       {
         title: '组件',
-        children: ['/components/button']
+        children: ['/guide/components/button']
       }
     ]
   }

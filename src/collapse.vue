@@ -35,23 +35,25 @@ export default {
     }
   },
   mounted () {
-    this.eventBus.$emit('update:selected', this.selected)
-    this.eventBus.$on('update:addSelected', (name) => { // 将变化的selected 传递给外界的selected，双向传递
+    this.eventBus.$emit('update:selected', this.selected) // 设置初始选择
+
+    this.eventBus.$on('update:addSelected', (name) => { // 选中打开
       let selectedCopy = JSON.parse(JSON.stringify(this.selected))
       if (this.single) {
         selectedCopy = [name]
       } else {
         selectedCopy.push(name)
       }
-      this.eventBus.$emit('update:selected', selectedCopy)
-      this.$emit('update:selected', selectedCopy)
+      this.eventBus.$emit('update:selected', selectedCopy) // 传递给item 内部
+      this.$emit('update:selected', selectedCopy) // 将变化的selected 传递给调用组件者
     })
-    this.eventBus.$on('update:removeSelected', (name) => {
+
+    this.eventBus.$on('update:removeSelected', (name) => { // 选中关闭
       let selectedCopy = JSON.parse(JSON.stringify(this.selected))
       let index = selectedCopy.indexOf(name)
       selectedCopy.splice(index, 1)
-      this.eventBus.$emit('update:selected', selectedCopy)
-      this.$emit('update:selected', selectedCopy)
+      this.eventBus.$emit('update:selected', selectedCopy) // 传递给item 内部
+      this.$emit('update:selected', selectedCopy) // 将变化的selected 传递给调用组件者
     })
   }
 }

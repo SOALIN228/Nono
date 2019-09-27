@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import Icon from './icon'
-import Button from './button'
-import ButtonGroup from './button-group'
-import Input from './input'
-import Row from './row'
-import Col from './col'
+import Icon from './Icon'
+import Button from './Button'
+import ButtonGroup from './ButtonGroup'
+import Input from './Input'
+import Row from './Row'
+import Col from './Col'
 import Layout from './layout'
 import Header from './header'
 import Content from './content'
@@ -20,12 +20,13 @@ import Popover from './popover'
 import Collapse from './collapse'
 import CollapseItem from './collapse-item'
 
-Vue.component('g-icon', Icon)
-Vue.component('g-button', Button)
-Vue.component('g-button-group', ButtonGroup)
-Vue.component('g-input', Input)
-Vue.component('g-row', Row)
-Vue.component('g-col', Col)
+Vue.use(Icon)
+Vue.use(Button)
+Vue.use(ButtonGroup)
+Vue.use(Input)
+Vue.use(Row)
+Vue.use(Col)
+
 Vue.component('g-layout', Layout)
 Vue.component('g-header', Header)
 Vue.component('g-content', Content)

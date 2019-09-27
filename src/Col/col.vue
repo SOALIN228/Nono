@@ -1,5 +1,5 @@
 <template>
-  <div class="col" :class="colClass" :style="colStyle">
+  <div class="n-col" :class="colClass" :style="colStyle">
     <slot></slot>
   </div>
 </template>
@@ -23,14 +23,33 @@ export default {
     offset: {
       type: [Number, String]
     },
-    ipad: { type: Object, validator, },
-    narrowPc: { type: Object, validator, },
-    pc: { type: Object, validator, },
-    widePc: { type: Object, validator, }
+    sm: { type: Object, validator },
+    md: { type: Object, validator },
+    lg: { type: Object, validator },
+    xl: { type: Object, validator }
   },
   data () {
     return {
       gutter: 0,
+    }
+  },
+  computed: {
+    colClass () {
+      let { span, offset, sm, md, lg, xl } = this
+      let createClasses = this.createClasses
+      return [
+        ...createClasses({ span, offset }),
+        ...createClasses(sm, 'sm-'),
+        ...createClasses(md, 'md-'),
+        ...createClasses(lg, 'lg-'),
+        ...createClasses(xl, 'xl-')
+      ]
+    },
+    colStyle () {
+      return {
+        paddingLeft: this.gutter / 2 + 'px',
+        paddingRight: this.gutter / 2 + 'px'
+      }
     }
   },
   methods: {
@@ -47,30 +66,11 @@ export default {
       }
       return array
     }
-  },
-  computed: {
-    colClass () {
-      let { span, offset, ipad, narrowPc, pc, widePc } = this
-      let createClasses = this.createClasses
-      return [
-        ...createClasses({span, offset}),
-        ...createClasses(ipad, 'ipad-'),
-        ...createClasses(narrowPc, 'narrow-pc-'),
-        ...createClasses(pc, 'pc-'),
-        ...createClasses(widePc, 'wide-pc-')
-      ]
-    },
-    colStyle () {
-      return {
-        paddingLeft: this.gutter / 2 + 'px',
-        paddingRight: this.gutter / 2 + 'px',
-      }
-    }
   }
 }
 </script>
 <style scoped lang="scss">
-  .col {
+  .n-col {
     $class-prefix: col-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -84,13 +84,13 @@ export default {
       }
     }
     @media (min-width: 577px) {
-      $class-prefix: col-ipad-;
+      $class-prefix: col-sm-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
           width: ($n / 24) * 100%;
         }
       }
-      $class-prefix: offset-ipad-;
+      $class-prefix: offset-sm-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
           margin-left: ($n / 24) * 100%;
@@ -98,13 +98,13 @@ export default {
       }
     }
     @media (min-width: 769px) {
-      $class-prefix: col-narrow-pc-;
+      $class-prefix: col-md-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
           width: ($n / 24) * 100%;
         }
       }
-      $class-prefix: offset-narrow-pc-;
+      $class-prefix: offset-md-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
           margin-left: ($n / 24) * 100%;
@@ -112,13 +112,13 @@ export default {
       }
     }
     @media (min-width: 993px) {
-      $class-prefix: col-pc-;
+      $class-prefix: col-lg-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
           width: ($n / 24) * 100%;
         }
       }
-      $class-prefix: offset-pc-;
+      $class-prefix: offset-lg-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
           margin-left: ($n / 24) * 100%;
@@ -126,13 +126,13 @@ export default {
       }
     }
     @media (min-width: 1201px) {
-      $class-prefix: col-wide-pc-;
+      $class-prefix: col-xl-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
           width: ($n / 24) * 100%;
         }
       }
-      $class-prefix: offset-wide-pc-;
+      $class-prefix: offset-xl-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
           margin-left: ($n / 24) * 100%;

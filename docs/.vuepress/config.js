@@ -17,7 +17,10 @@ module.exports = {
       },
       {
         title: '组件',
-        children: ['/guide/components/button']
+        children: [
+          '/guide/components/button',
+          '/guide/components/input'
+        ]
       }
     ]
   }

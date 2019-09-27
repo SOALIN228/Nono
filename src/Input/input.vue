@@ -7,19 +7,19 @@
            @blur="$emit('blur', $event.target.value)"
     >
     <template v-if="error">
-      <Icon name="error" class="icon-error"></Icon>
+      <n-icon name="error" class="icon-error"></n-icon>
       <span class="errorMessage">{{error}}</span>
     </template>
   </div>
 </template>
 
 <script>
-import Icon from './icon'
+import Icon from '../Icon/icon'
 
 export default {
   name: 'NInput',
   components: {
-    Icon
+    'n-icon': Icon
   },
   props: {
     value: {
@@ -36,9 +36,6 @@ export default {
     error: {
       type: String
     }
-  },
-  data () {
-    return {}
   }
 }
 </script>

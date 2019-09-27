@@ -1,6 +1,6 @@
 const expect = chai.expect
 import Vue from 'vue'
-import Button from '../src/button'
+import Button from '../src/Button/button'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
@@ -33,7 +33,7 @@ describe('Button', () => {
     expect(useElements[0].getAttribute('xlink:href')).to.equal('#i-loading')
     vm.$destroy()
   })
-  it('icon 默认的 order 是 1', () => {
+  it('Icon 默认的 order 是 1', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const Constructor = Vue.extend(Button)
@@ -62,7 +62,7 @@ describe('Button', () => {
     vm.$el.remove()
     vm.$destroy()
   })
-  it('点击 button 触发 click 事件', () => {
+  it('点击 Button 触发 click 事件', () => {
     const Constructor = Vue.extend(Button)
     const vm = new Constructor({
       propsData: {

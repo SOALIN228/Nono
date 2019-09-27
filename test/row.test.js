@@ -1,7 +1,7 @@
 const expect = chai.expect
 import Vue from 'vue'
-import Row from '../src/row'
-import Col from '../src/col'
+import Row from '../src/Row/row'
+import Col from '../src/Col/col'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
@@ -11,24 +11,24 @@ describe('Row', () => {
     expect(Row).to.exist
   })
   it('接收 gutter 属性.', (done) => { // 设置done 为异步，手动调done 表示结束
-    Vue.component('g-row', Row)
-    Vue.component('g-col', Col)
+    Vue.component('n-row', Row)
+    Vue.component('n-col', Col)
     const div = document.createElement('div')
     document.body.appendChild(div)
     div.innerHTML = `
-      <g-row gutter="20">
-        <g-col span="12"></g-col>
-        <g-col span="12"></g-col>
-      </g-row>
+      <n-row gutter="20">
+        <n-col span="12"></n-col>
+        <n-col span="12"></n-col>
+      </n-row>
     `
     const vm = new Vue({
       el: div
     })
     setTimeout(() => {
-      const row = vm.$el.querySelector('.row')
+      const row = vm.$el.querySelector('.n-row')
       expect(getComputedStyle(row).marginLeft).to.eq('-10px')
       expect(getComputedStyle(row).marginRight).to.eq('-10px')
-      const cols = vm.$el.querySelectorAll('.col')
+      const cols = vm.$el.querySelectorAll('.n-col')
       expect(getComputedStyle(cols[0]).paddingRight).to.eq('10px')
       expect(getComputedStyle(cols[1]).paddingLeft).to.eq('10px')
       done()
@@ -36,13 +36,13 @@ describe('Row', () => {
       vm.$destroy()
     })
   })
-  it('接收 align 属性', () => {
+  it('接收 justify 属性', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const Constructor = Vue.extend(Row)
     const vm = new Constructor({
       propsData: {
-        align: 'right'
+        justify: 'end'
       }
     }).$mount(div)
     const element = vm.$el

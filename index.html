@@ -35,11 +35,40 @@
       background: #ccc;
       height: 50px;
     }
+    .n-row {
+      margin-bottom: 20px;
+    }
+    .n-col {
+      border-radius: 4px;
+    }
+    .bg-purple-dark {
+      background: #99a9bf;
+    }
+    .bg-purple {
+      background: #d3dce6;
+    }
+    .bg-purple-light {
+      background: #e5e9f2;
+    }
+    .grid-content {
+      border-radius: 4px;
+      min-height: 36px;
+    }
   </style>
 </head>
 <body>
-  <div id="app" style="padding: 100px;">
-    <g-button @click="onClickButton">上方弹出</g-button>
+  <div id="app">
+    <n-row gutter="10">
+      <n-col span="6" :sm="{span: 8}" :md="{span: 4}">
+        <div class="grid-content bg-purple">1</div>
+      </n-col>
+      <n-col span="6" :sm="{span: 8}" :md="{span: 4}">
+        <div class="grid-content bg-purple-light">2</div>
+      </n-col>
+      <n-col span="6" :sm="{span: 8}" :md="{span: 3}">
+        <div class="grid-content bg-purple-light">3</div>
+      </n-col>
+    </n-row>
   </div>
   <script src="src/main.js"></script>
 </body>

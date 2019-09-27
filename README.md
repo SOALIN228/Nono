@@ -19,6 +19,12 @@ SOALIN228@163.com
 
 ### 组件
 
+`icon`
+
+1. 使用`SVG` 图标
+2. 接收在调用处传递的参数，显示不同的图标
+3. ` `` ` 一定要写在`""` 中，不然打包可能会有坑
+
 `button`
 
 1. 使用`slot` 进行值的传递
@@ -27,12 +33,6 @@ SOALIN228@163.com
 4. 元素对齐使用`vertical-align: middle;`
 5. 使用`flex` 布局，通过`order` 属性控制图标显示位置
 6. 在组件上监听事件，会默认进入组件内部，需要在组件中使用`@click="$emit('click')"` 将事件再传递出去
-
-`icon`
-
-1. 使用`SVG` 图标
-2. 接收在调用处传递的参数，显示不同的图标
-3. ` `` ` 一定要写在`""` 中，不然打包可能会有坑
 
 `button-group`
 
@@ -47,6 +47,26 @@ SOALIN228@163.com
 1. 传入`error` 属性来进行文字的提示，使用`template` 包成一个整体
 2. 在组件上直接写`disabled` 相当于`:disabled=true`
 3. `v-model` 通过`@input="$emit('input', $event.target.value)"` 、`:value="value"` 实现
+
+`row`
+
+1. 设置间隔，需要在父组件上设置marginLeft 和marginRight 负x px，在col 上设置paddingLeft 和paddingRight x px，就可以实现间隔问题
+
+2. vue 生命周期在父子组件中是父create，子create，子mounted，父mounted，这样在row 的mounted中就可以将gutter 传给col
+
+   ```js
+   mounted () {
+     this.$children.forEach((vm) => {
+     	vm.gutter = this.gutter
+     })
+   }
+   ```
+
+`col`
+
+1. span="8" 传递的是字符串8，要使用bind 设置为数字，在props 接收String和Number两种类型
+2. 使用scss 的函数做1 - 24 的栅格布局，不用写24个class
+3. @media 从小尺寸写到大尺寸，因为下面的class 比前面的class 优先级高，这样大尺寸可以覆盖小尺寸
 
 ### 测试
 

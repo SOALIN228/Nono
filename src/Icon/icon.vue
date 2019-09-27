@@ -9,10 +9,7 @@ import './svg'
 
 export default {
   name: 'NIcon',
-  props: ['name'],
-  data () {
-    return {}
-  }
+  props: ['name']
 }
 </script>
 

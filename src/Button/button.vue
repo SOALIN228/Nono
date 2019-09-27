@@ -1,7 +1,7 @@
 <template>
   <button class="button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
-    <Icon :name="icon" class="icon" v-if="icon && !loading"></Icon>
-    <Icon class="loading icon" name="loading" v-if="loading"></Icon>
+    <n-icon :name="icon" class="icon" v-if="icon && !loading"></n-icon>
+    <n-icon class="loading icon" name="loading" v-if="loading"></n-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import Icon from './icon'
+import Icon from '../Icon/icon'
 
 export default {
   name: 'NButton',
   components: {
-    Icon
+    'n-icon': Icon
   },
   props: {
     icon: {},
@@ -29,9 +29,6 @@ export default {
         return value === 'left' || value === 'right'
       }
     }
-  },
-  data () {
-    return {}
   }
 }
 </script>

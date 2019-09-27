@@ -7,9 +7,6 @@
 <script>
 export default {
   name: 'NButtonGroup',
-  data () {
-    return {}
-  },
   mounted () {
     for (let node of this.$el.children) {
       let name = node.nodeName.toLocaleLowerCase()

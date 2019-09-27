@@ -1,6 +1,6 @@
 const expect = chai.expect
 import Vue from 'vue'
-import Input from '../src/input'
+import Input from '../src/Input/input'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
@@ -64,7 +64,7 @@ describe('Input', () => {
     afterEach(() => {
       vm.$destroy()
     })
-    it('支持 change/input/focus/blur 事件', () => {
+    it('支持 change/Input/focus/blur 事件', () => {
       ['change', 'input', 'focus', 'blur'].forEach((eventName) => {
         vm = new Constructor({}).$mount()
         const callback = sinon.fake()

@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :style="rowStyle" :class="rowClass">
+  <div class="n-row" :style="rowStyle" :class="rowClass">
     <slot></slot>
   </div>
 </template>
@@ -11,10 +11,10 @@ export default {
     gutter: {
       type: [Number, String]
     },
-    align: {
+    justify: {
       type: String,
       validator (value) {
-        return ['left', 'right', 'center'].indexOf(value) >= 0
+        return ['start', 'end', 'center', 'space-around', 'space-between'].indexOf(value) >= 0
       }
     }
   },
@@ -26,7 +26,7 @@ export default {
       }
     },
     rowClass () {
-      return [this.align && `align-${this.align}`]
+      return [this.justify && `flex-${this.justify}`]
     }
   },
   mounted () {
@@ -38,20 +38,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .row {
+  .n-row {
     display: flex;
     flex-wrap: wrap;
 
-    &.align-left {
+    &.flex-start {
       justify-content: flex-start;
     }
 
-    &.align-right {
+    &.flex-end {
       justify-content: flex-end;
     }
 
-    &.align-center {
+    &.flex-center {
       justify-content: center;
+    }
+
+    &.flex-space-around {
+      justify-content: space-around;
+    }
+
+    &.flex-space-between {
+      justify-content: space-between;
     }
   }
 </style>

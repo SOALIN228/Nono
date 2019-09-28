@@ -35,7 +35,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $black: rgba(0, 0, 0, 0.65);
+  @import "var";
+
   .tabs-pane {
     padding: 1em;
     color: $black;

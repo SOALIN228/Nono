@@ -51,9 +51,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $blue: #40a9ff;
-  $black: rgba(0, 0, 0, 0.65);
-  $disabled-text-color: rgba(0, 0, 0, 0.25);
+  @import "var";
+
   .tabs-item {
     flex-shrink: 0;
     padding: 0 1em;
@@ -74,6 +73,7 @@ export default {
 
     &.disabled {
       color: $disabled-text-color;
+
       &:hover {
         cursor: not-allowed;
         color: rgba(0, 0, 0, 0.25);

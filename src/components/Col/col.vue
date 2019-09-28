@@ -30,7 +30,7 @@ export default {
   },
   data () {
     return {
-      gutter: 0,
+      gutter: 0
     }
   },
   computed: {

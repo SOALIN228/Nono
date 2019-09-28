@@ -1,32 +1,50 @@
 <template>
   <div class="cascader">
-    <div class="trigger">
-      <slot></slot>
+    <div class="trigger" @click="popoverVisible = !popoverVisible">
     </div>
-    <div class="popover">
-      <div v-for="item in source">
-        <n-cascader-item :sourceItem="item"></n-cascader-item>
-      </div>
+    <div class="popover" v-if="popoverVisible">
+      <n-cascader-items :items="source"></n-cascader-items>
     </div>
   </div>
 </template>
 
 <script>
-import CascaderItem from '../CascaderItem/cascader-item'
+import CascaderItems from '../CascaderItems/cascader-items'
 
 export default {
   name: 'NCascader',
   components: {
-    'n-cascader-item': CascaderItem
+    'n-cascader-items': CascaderItems
   },
   props: {
     source: {
       type: Array
     }
+  },
+  data () {
+    return {
+      popoverVisible: false
+    }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  .cascader {
+    .trigger {
+      border: 1px solid red;
+      height: 32px;
+      width: 100px;
+    }
 
+    .popover {
+      border: 2px solid green;
+      height: 200px;
+      display: flex;
+
+      .label {
+        white-space: nowrap;
+      }
+    }
+  }
 </style>

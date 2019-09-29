@@ -41,11 +41,6 @@ export default {
       default: 0
     }
   },
-  data () {
-    return {
-      leftSelected: null
-    }
-  },
   computed: {
     rightItems () {
       let currentSelected = this.selected[this.level]

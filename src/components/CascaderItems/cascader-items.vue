@@ -76,6 +76,7 @@ export default {
     .left {
       height: 100%;
       padding: .3em 0;
+      overflow: auto;
 
       .label {
         padding: .3em 1em;

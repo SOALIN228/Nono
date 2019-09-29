@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <n-cascader :source="source" popover-height="200px"></n-cascader>
+    <p>{{selected &&selected[0] &&selected[0].name || '空'}}</p>
+    <p>{{selected &&selected[1] &&selected[1].name || '空'}}</p>
+    <p>{{selected &&selected[2] &&selected[2].name || '空'}}</p>
+    <n-cascader :source="source" popover-height="200px" :selected="selected"
+                @update:selected="selected = $event"></n-cascader>
   </div>
 </template>
 
@@ -10,6 +14,7 @@ export default {
   name: 'app',
   data () {
     return {
+      selected: [],
       source: [{
         name: '浙江',
         children: [

@@ -52,6 +52,7 @@ export default {
           return selected[0].children
         }
       }
+      return null
     }
   },
   methods: {
@@ -88,9 +89,12 @@ export default {
         display: flex;
         align-items: center;
         cursor: pointer;
+        white-space: nowrap;
+
         &:hover {
           background: $grey;
         }
+
         > .name {
           margin-right: 1em;
           user-select: none;

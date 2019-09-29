@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <n-cascader :source="source"></n-cascader>
+    <n-cascader :source="source" popover-height="200px"></n-cascader>
   </div>
 </template>
 

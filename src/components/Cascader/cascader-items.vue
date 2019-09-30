@@ -3,7 +3,19 @@
     <div class="left">
       <div class="label" v-for="item in items" @click="onClickLabel(item)" :key="item.name">
         <span class="name">{{item.name}}</span>
-        <n-icon class="icon" v-if="rightArrowVisible(item)" name="right"></n-icon>
+        <span class="icons">
+          <template v-if="item.name === loadingItem.name">
+            <n-icon class="loading" name="loading"></n-icon>
+          </template>
+          <template v-else>
+            <n-icon class="next"
+                    v-if="rightArrowVisible(item)"
+                    name="right"
+                    :loading-item="loadingItem"
+                    :load-data="loadData"
+            ></n-icon>
+          </template>
+        </span>
       </div>
     </div>
     <div class="right" v-if="rightItems">
@@ -31,6 +43,10 @@ export default {
     },
     height: {
       type: String
+    },
+    loadingItem: {
+      type: Object,
+      default: () => ({})
     },
     selected: {
       type: Array,
@@ -100,9 +116,16 @@ export default {
           user-select: none;
         }
 
-        .icon {
+        .icons {
           margin-left: auto;
-          transform: scale(0.6);
+
+          .next {
+            transform: scale(0.6);
+          }
+
+          .loading {
+            animation: spin 2s infinite linear;
+          }
         }
       }
     }

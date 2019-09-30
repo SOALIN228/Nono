@@ -6,6 +6,7 @@
     <div class="popover-wrapper" v-if="popoverVisible">
       <n-cascader-items :items="source"
                         :height="popoverHeight"
+                        :loading-item="loadingItem"
                         :selected="selected"
                         @update:selected="onUpdateSelected"
                         :loadData="loadData"
@@ -43,7 +44,8 @@ export default {
   },
   data () {
     return {
-      popoverVisible: false
+      popoverVisible: false,
+      loadingItem: {}
     }
   },
   computed: {
@@ -100,14 +102,16 @@ export default {
         }
       }
       let updateSource = (result) => {
+        this.loadingItem = {}
         let copy = JSON.parse(JSON.stringify(this.source))
         let toUpdate = complex(copy, lastItem.id)
         toUpdate.children = result
         this.$emit('update:source', copy)
       }
-      if (!lastItem.isLeaf) {
-        this.loadData && this.loadData(lastItem, updateSource) // 回调:把别人传给我的函数调用一下
+      if (!lastItem.isLeaf && this.loadData) {
+        this.loadData(lastItem, updateSource) // 回调:把别人传给我的函数调用一下
         // 调回调的时候传一个函数,这个函数理论应该被调用
+        this.loadingItem = lastItem
       }
     }
   }
@@ -129,6 +133,7 @@ export default {
       min-width: 10em;
       border: 1px solid $border-color;
       border-radius: $border-radius;
+      background: white;
     }
 
     .popover-wrapper {
@@ -138,6 +143,7 @@ export default {
       background: white;
       display: flex;
       margin-top: 8px;
+      z-index: 1;
       @extend .box-shadow;
     }
   }

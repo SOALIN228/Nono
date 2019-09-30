@@ -12,6 +12,7 @@
                   :load-data="loadData"
       ></n-cascader>
     </div>
+    {{selected.map(item=> item.name)}}
   </div>
 </template>
 
@@ -30,7 +31,7 @@ function ajax (parentId = 0) {
         }
       })
       resolve(result)
-    }, 300)
+    }, 3000)
   })
 }
 

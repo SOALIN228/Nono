@@ -7,7 +7,7 @@ import Icon from './components/Icon'
 import Input from './components/Input'
 import Row from './components/Row'
 import Cascader from './components/Cascader/cascader'
-import CascaderItem from './components/CascaderItems/cascader-items'
+import CascaderItem from './components/Cascader/cascader-items'
 
 Vue.use(Button)
 Vue.use(ButtonGroup)

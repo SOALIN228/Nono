@@ -5417,7 +5417,7 @@ loglevel@^1.6.4:
 
 lolex@^4.1.0, lolex@^4.2.0:
   version "4.2.0"
-  resolved "https://registry.npm.taobao.org/lolex/download/lolex-4.2.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flolex%2Fdownload%2Flolex-4.2.0.tgz#ddbd7f6213ca1ea5826901ab1222b65d714b3cd7"
+  resolved "https://registry.npm.taobao.org/lolex/download/lolex-4.2.0.tgz#ddbd7f6213ca1ea5826901ab1222b65d714b3cd7"
   integrity sha1-3b1/YhPKHqWCaQGrEiK2XXFLPNc=
 
 loose-envify@^1.0.0:
@@ -6582,7 +6582,7 @@ path-to-regexp@0.1.7:
 
 path-to-regexp@^1.7.0:
   version "1.7.0"
-  resolved "https://registry.npm.taobao.org/path-to-regexp/download/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
+  resolved "https://registry.npm.taobao.org/path-to-regexp/download/path-to-regexp-1.7.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpath-to-regexp%2Fdownload%2Fpath-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
   integrity sha1-Wf3g9DW62suhA6hOnTvGTpa5k30=
   dependencies:
     isarray "0.0.1"

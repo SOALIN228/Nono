@@ -25,6 +25,8 @@
   "homepage": "https://github.com/SOALIN228/Nono#readme",
   "dependencies": {
     "core-js": "^2.6.5",
+    "sinon": "^7.5.0",
+    "sinon-chai": "^3.3.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {

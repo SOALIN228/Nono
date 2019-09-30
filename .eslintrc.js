@@ -17,8 +17,7 @@ module.exports = {
   overrides: [
     {
       files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        'svg.js'
+        '**/__tests__/*.{j,t}s?(x)'
       ],
       env: {
         mocha: true

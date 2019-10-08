@@ -23,8 +23,6 @@ export default {
   },
   computed: {
     visible () {
-      // console.log(`我的name是${this.name}`)
-      // console.log(`我的方向是${this.reverse ? '反向' : '正向'}`)
       return this.selected === this.name
     }
   }
@@ -49,21 +47,17 @@ export default {
 
   .carousel-enter {
     transform: translateX(100%);
-    opacity: 0;
   }
 
   .carousel-enter.reverse {
     transform: translateX(-100%);
-    opacity: 0;
   }
 
   .carousel-leave-to {
-    transform: translateX(-100%) scale(0.5);
-    opacity: 0;
+    transform: translateX(-100%);
   }
 
   .carousel-leave-to.reverse {
-    transform: translateX(100%) scale(0.5);
-    opacity: 0;
+    transform: translateX(100%);
   }
 </style>

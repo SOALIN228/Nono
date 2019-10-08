@@ -1,18 +1,20 @@
 <template>
-  <div class="header">
+  <div class="n-content">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NHeader',
+  name: 'NContent',
   data () {
     return {}
   }
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+  .n-content {
+    flex-grow: 1;
+  }
 </style>

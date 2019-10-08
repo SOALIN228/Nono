@@ -20,7 +20,8 @@ module.exports = {
         children: [
           '/guide/components/button',
           '/guide/components/input',
-          '/guide/components/layout'
+          '/guide/components/layout',
+          '/guide/components/container'
         ]
       }
     ]

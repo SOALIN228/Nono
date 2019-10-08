@@ -1,5 +1,5 @@
 <template>
-  <div class="layout" :class="layoutClass">
+  <div class="n-layout" :class="layoutClass">
     <slot></slot>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .layout {
+  .n-layout {
     display: flex;
     flex-grow: 1;
     flex-direction: column;

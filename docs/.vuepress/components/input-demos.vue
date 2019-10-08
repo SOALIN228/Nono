@@ -3,9 +3,7 @@
     <h2>基础用法</h2>
     <div class="component-wrapper">
       <div class="component-wrapper-demo">
-        <n-button>默认按钮</n-button>
-        <n-button icon="settings">图标按钮</n-button>
-        <n-button :loading="true">loading按钮</n-button>
+        <n-input value="默认"></n-input>
       </div>
       <div class="code-content" v-highlight style="height: 0;">
         <div class="code-content-height">
@@ -17,22 +15,15 @@
         <span class="lock-code-word">{{isShow[0] === false ? '显示代码' : '隐藏代码'}}</span>
       </div>
     </div>
-    <h2>按钮组</h2>
+    <h2>禁用状态</h2>
     <div class="component-wrapper">
       <div class="component-wrapper-demo">
-        <n-button-group>
-          <n-button icon="left">L</n-button>
-          <n-button icon="right" iconPosition="right">R</n-button>
-        </n-button-group>
-        <n-button-group>
-          <n-button>L</n-button>
-          <n-button>M</n-button>
-          <n-button>R</n-button>
-        </n-button-group>
+        <n-input value="禁用" disabled></n-input>
+        <n-input value="禁用" readonly></n-input>
       </div>
       <div class="code-content" v-highlight style="height: 0;">
         <div class="code-content-height">
-          <pre><code class="html">{{codeGroup}}</code></pre>
+          <pre><code class="html">{{codeDisabled}}</code></pre>
         </div>
       </div>
       <div class="lock-code" @click="showCode(1)">
@@ -40,40 +31,47 @@
         <span class="lock-code-word">{{isShow[1] === false ? '显示代码' : '隐藏代码'}}</span>
       </div>
     </div>
+    <h2>错误状态</h2>
+    <div class="component-wrapper">
+      <div class="component-wrapper-demo">
+        <n-input value="错误" error="请输入正确的内容"></n-input>
+      </div>
+      <div class="code-content" v-highlight style="height: 0;">
+        <div class="code-content-height">
+          <pre><code class="html">{{codeError}}</code></pre>
+        </div>
+      </div>
+      <div class="lock-code" @click="showCode(2)">
+        <n-icon class="icon-down" :name="isShow[2] === false ? 'down' : 'up'"></n-icon>
+        <span class="lock-code-word">{{isShow[2] === false ? '显示代码' : '隐藏代码'}}</span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Icon from '../../../src/components/Icon/icon'
-import Button from '../../../src/components/Button/button'
-import ButtonGroup from '../../../src/components/ButtonGroup/button-group'
+import Input from '../../../src/components/Input/input'
 import mixin from '../mixin'
 
 export default {
-  name: 'button-demos',
+  name: 'input-demos',
   components: {
     'n-icon': Icon,
-    'n-button': Button,
-    'n-button-group': ButtonGroup
+    'n-input': Input
   },
   mixins: [mixin],
   data () {
     return {
       codeBase: `
-        <n-button>默认按钮</n-button>
-        <n-button icon="settings">图标按钮</n-button>
-        <n-button :loading="true">loading按钮</n-button>
+        <n-input value="默认"></n-input>
         `.replace(/^ {8}/gm, '').trim(),
-      codeGroup: `
-        <n-button-group>
-          <n-button icon="left">L</n-button>
-          <n-button icon="right" iconPosition="right">R</n-button>
-        </n-button-group>
-        <n-button-group>
-          <n-button>L</n-button>
-          <n-button>M</n-button>
-          <n-button>R</n-button>
-        </n-button-group>
+      codeDisabled: `
+        <n-input value="禁用" disabled></n-input>
+        <n-input value="禁用" readonly></n-input>
+        `.replace(/^ {8}/gm, '').trim(),
+      codeError: `
+        <n-input value="错误" error="请输入正确的内容"></n-input>
         `.replace(/^ {8}/gm, '').trim()
     }
   }

@@ -1,12 +1,12 @@
 <template>
-<div class="footer">
-  <slot></slot>
-</div>
+  <div class="n-sider">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'NFooter',
+  name: 'NSider',
   data () {
     return {}
   }
@@ -14,5 +14,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

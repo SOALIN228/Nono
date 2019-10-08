@@ -1,5 +1,10 @@
 <template>
-  <div class="n-carousel" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+  <div class="n-carousel"
+       @mouseenter="onMouseEnter"
+       @mouseleave="onMouseLeave"
+       @touchstart="onTouchStart"
+       @touchend="onTouchEnd"
+  >
     <div class="n-carousel-window" ref="window">
       <div class="n-carousel-wrapper">
         <slot></slot>
@@ -32,7 +37,8 @@ export default {
     return {
       childrenLength: 0,
       lastSelectedIndex: undefined,
-      timerId: undefined
+      timerId: undefined,
+      startTouch: undefined
     }
   },
   mounted () {
@@ -45,7 +51,8 @@ export default {
   },
   computed: {
     selectedIndex () {
-      return this.names.indexOf(this.selected) || 0 // 未选中默认选择第1张
+      let index = this.names.indexOf(this.selected)
+      return index === -1 ? 0 : index// 未选中默认选择第1张
     },
     names () {
       return this.$children.map(vm => vm.name)
@@ -57,6 +64,31 @@ export default {
     },
     onMouseLeave () {
       this.playAutomatically()
+    },
+    onTouchStart (e) {
+      this.pause()
+      if (e.touches.length > 1) {
+        return
+      }
+      this.startTouch = e.touches[0]
+    },
+    onTouchEnd (e) {
+      let endTouch = e.changedTouches[0]
+      let { clientX: x1, clientY: y1 } = this.startTouch
+      let { clientX: x2, clientY: y2 } = endTouch
+      let distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
+      let deltaY = Math.abs(y2 - y1)
+      let rate = distance / deltaY
+      if (rate > 2) {
+        if (x2 > x1) {
+          this.select(this.selectedIndex - 1)
+        } else {
+          this.select(this.selectedIndex + 1)
+        }
+      }
+      this.$nextTick(() => {
+        this.playAutomatically()
+      })
     },
     /* eslint-disable */
     playAutomatically () {
@@ -90,14 +122,17 @@ export default {
       return this.selected || first.name
     },
     updateChildren () {
+      console.log(999)
       let selected = this.getSelected()
       this.$children.forEach((vm) => {
         let reverse = this.selectedIndex <= this.lastSelectedIndex // 设置子元素动画是正向还是反向
         if (this.timerId) {
           if (this.lastSelectedIndex === this.$children.length - 1 && this.selectedIndex === 0) {
+            console.log(1)
             reverse = false
           }
           if (this.lastSelectedIndex === 0 && this.selectedIndex === this.$children.length - 1) {
+            console.log(2)
             reverse = true
           }
         }

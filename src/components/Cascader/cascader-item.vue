@@ -33,7 +33,7 @@
 import Icon from '../Icon/icon'
 
 export default {
-  name: 'NCascaderItems',
+  name: 'NCascaderItem',
   components: {
     'n-icon': Icon
   },

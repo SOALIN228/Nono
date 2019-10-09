@@ -45,6 +45,14 @@ export default {
       this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   },
+  beforeDestroy () {
+    if (this.trigger === 'click') {
+      this.$refs.popover.removeEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.removeEventListener('mouseenter', this.open)
+      this.$refs.popover.removeEventListener('mouseleave', this.close)
+    }
+  },
   methods: {
     positionContent () { // 将popover 显示在页面上并固定位置
       const { contentWrapper, triggerWrapper } = this.$refs
@@ -54,7 +62,7 @@ export default {
       let positions = {
         top: {
           top: top + window.scrollY,
-          left: left + window.scrollX,
+          left: left + window.scrollX
         },
         bottom: {
           top: top + height + window.scrollY,

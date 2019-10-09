@@ -11,19 +11,30 @@
       </div>
     </div>
     <div class="n-carousel-dots">
+      <span @click="onClickPrev">
+        <n-icon name="left"></n-icon>
+      </span>
       <span v-for="n in childrenLength" :key="n"
             :class="{active: selectedIndex === n-1}"
             @click="select(n-1)"
       >
         {{n}}
       </span>
+      <span @click="onClickNext">
+        <n-icon name="right"></n-icon>
+      </span>
     </div>
   </div>
 </template>
 
 <script>
+import Icon from '../Icon/icon'
+
 export default {
   name: 'n-carousel',
+  components: {
+    'n-icon': Icon
+  },
   props: {
     selected: {
       type: String
@@ -44,7 +55,7 @@ export default {
   mounted () {
     this.updateChildren()
     this.playAutomatically()
-    this.childrenLength = this.$children.length // 获取子元素的长度
+    this.childrenLength = this.items.length // 获取子元素的长度
   },
   updated () {
     this.updateChildren()
@@ -55,7 +66,10 @@ export default {
       return index === -1 ? 0 : index// 未选中默认选择第1张
     },
     names () {
-      return this.$children.map(vm => vm.name)
+      return this.items.map(vm => vm.name)
+    },
+    items () {
+      return this.$children.filter(vm => vm.$options.name === 'NCarouselItem')
     }
   },
   methods: {
@@ -103,6 +117,12 @@ export default {
       }
       this.timerId = setTimeout(run, 3000)
     },
+    onClickPrev () {
+      this.select(this.selectedIndex - 1)
+    },
+    onClickNext () {
+      this.select(this.selectedIndex + 1)
+    },
     pause () {
       window.clearTimeout(this.timerId)
       this.timerId = undefined
@@ -118,21 +138,18 @@ export default {
       this.$emit('update:selected', this.names[newIndex])
     },
     getSelected () {
-      let first = this.$children[0]
+      let first = this.items[0]
       return this.selected || first.name
     },
     updateChildren () {
-      console.log(999)
       let selected = this.getSelected()
-      this.$children.forEach((vm) => {
+      this.items.forEach((vm) => {
         let reverse = this.selectedIndex <= this.lastSelectedIndex // 设置子元素动画是正向还是反向
         if (this.timerId) {
-          if (this.lastSelectedIndex === this.$children.length - 1 && this.selectedIndex === 0) {
-            console.log(1)
+          if (this.lastSelectedIndex === this.items.length - 1 && this.selectedIndex === 0) {
             reverse = false
           }
-          if (this.lastSelectedIndex === 0 && this.selectedIndex === this.$children.length - 1) {
-            console.log(2)
+          if (this.lastSelectedIndex === 0 && this.selectedIndex === this.items.length - 1) {
             reverse = true
           }
         }

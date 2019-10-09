@@ -11,16 +11,16 @@
       </div>
     </div>
     <div class="n-carousel-dots">
-      <span @click="onClickPrev">
+      <span @click="onClickPrev" data-action="prev">
         <n-icon name="left"></n-icon>
       </span>
-      <span v-for="n in childrenLength" :key="n"
+      <span v-for="n in childrenLength" :key="n" :data-index="n-1"
             :class="{active: selectedIndex === n-1}"
             @click="select(n-1)"
       >
         {{n}}
       </span>
-      <span @click="onClickNext">
+      <span @click="onClickNext" data-action="next">
         <n-icon name="right"></n-icon>
       </span>
     </div>
@@ -42,6 +42,10 @@ export default {
     autoPlay: {
       type: Boolean,
       default: true
+    },
+    autoPlayDelay: {
+      type: Number,
+      default: 3000
     }
   },
   data () {
@@ -54,11 +58,16 @@ export default {
   },
   mounted () {
     this.updateChildren()
-    this.playAutomatically()
+    if (this.autoPlay) {
+      this.playAutomatically()
+    }
     this.childrenLength = this.items.length // 获取子元素的长度
   },
   updated () {
     this.updateChildren()
+  },
+  beforeDestroy () {
+    this.pause()
   },
   computed: {
     selectedIndex () {
@@ -113,9 +122,9 @@ export default {
         let index = this.names.indexOf(this.getSelected())
         let newIndex = index + 1
         this.select(newIndex)
-        this.timerId = setTimeout(run, 3000)
+        this.timerId = setTimeout(run, this.autoPlayDelay)
       }
-      this.timerId = setTimeout(run, 3000)
+      this.timerId = setTimeout(run, this.autoPlayDelay)
     },
     onClickPrev () {
       this.select(this.selectedIndex - 1)
